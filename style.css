@@ -33,6 +33,31 @@ h2 {
     background: #ddd;
 }
 
+/* Ícones dos botões de alinhamento */
+.toolbar button[title="Alinhar à esquerda"]::after {
+    content: " ⇤";
+    font-weight: normal;
+    margin-left: 4px;
+}
+
+.toolbar button[title="Alinhar ao centro"]::after {
+    content: " ⇄";
+    font-weight: normal;
+    margin-left: 4px;
+}
+
+.toolbar button[title="Alinhar à direita"]::after {
+    content: " ⇥";
+    font-weight: normal;
+    margin-left: 4px;
+}
+
+.toolbar button[title="Justificar texto"]::after {
+    content: " ≡";
+    font-weight: normal;
+    margin-left: 4px;
+}
+
 #editor {
     width: 700px;
     height: 300px;

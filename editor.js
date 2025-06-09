@@ -123,6 +123,8 @@ function exportar(tipo) {
             const doc = new jsPDF();
 
             const text = editor.textContent || "";
+
+            // Quebra texto em linhas para o PDF (ajuste largura conforme necessário)
             const lines = doc.splitTextToSize(text, 180);
 
             doc.text(lines, 10, 10);
@@ -144,7 +146,7 @@ btnExportar.addEventListener('click', () => {
 });
 
 // Fecha dropdown ao clicar fora
-document.addEventListener('click', e => {
+window.addEventListener('click', (e) => {
     if (!btnExportar.contains(e.target) && !exportOptions.contains(e.target)) {
         exportOptions.classList.remove('show');
     }

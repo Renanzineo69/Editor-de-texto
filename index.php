@@ -20,6 +20,12 @@
     <button type="button" onclick="document.execCommand('insertOrderedList', false, '');" title="Lista numerada" aria-label="Lista numerada">1. Lista</button>
     <button type="button" onclick="document.execCommand('undo', false, '');" title="Desfazer (Ctrl+Z)" aria-label="Desfazer">↺ Desfazer</button>
     <button type="button" onclick="document.execCommand('redo', false, '');" title="Refazer (Ctrl+Y)" aria-label="Refazer">↻ Refazer</button>
+
+    <!-- BOTÕES DE ALINHAMENTO -->
+    <button type="button" onclick="document.execCommand('justifyLeft', false, '');" title="Alinhar à esquerda" aria-label="Alinhar à esquerda">⇤</button>
+    <button type="button" onclick="document.execCommand('justifyCenter', false, '');" title="Alinhar ao centro" aria-label="Alinhar ao centro">⇥</button>
+    <button type="button" onclick="document.execCommand('justifyRight', false, '');" title="Alinhar à direita" aria-label="Alinhar à direita">⇥⇥</button>
+    <button type="button" onclick="document.execCommand('justifyFull', false, '');" title="Justificar texto" aria-label="Justificar texto">≡</button>
 </div>
 
 <div class="editor-container">
@@ -46,5 +52,6 @@
 <div id="toast" class="toast"></div>
 
 <script src="editor.js"></script>
+
 </body>
 </html>
