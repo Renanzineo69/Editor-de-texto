@@ -26,6 +26,23 @@
     <button type="button" onclick="document.execCommand('justifyCenter', false, '');" title="Alinhar ao centro" aria-label="Alinhar ao centro">⇥</button>
     <button type="button" onclick="document.execCommand('justifyRight', false, '');" title="Alinhar à direita" aria-label="Alinhar à direita">⇥⇥</button>
     <button type="button" onclick="document.execCommand('justifyFull', false, '');" title="Justificar texto" aria-label="Justificar texto">≡</button>
+
+    <!-- COR DO TEXTO E FONTE -->
+    <label for="corTexto" title="Cor do texto" aria-label="Cor do texto">
+        <input type="color" id="corTexto" style="vertical-align: middle; margin-left: 10px;" />
+    </label>
+
+    <label for="fontFamily" title="Fonte do texto" aria-label="Fonte do texto">
+        <select id="fontFamily" style="vertical-align: middle; margin-left: 5px;">
+            <option value="">Fonte</option>
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+    </label>
 </div>
 
 <div class="editor-container">

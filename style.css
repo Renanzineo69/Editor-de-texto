@@ -16,6 +16,9 @@ h2 {
     padding: 5px;
     border-radius: 5px;
     user-select: none;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
 }
 
 .toolbar button {
@@ -163,20 +166,20 @@ h2 {
 /* Toast */
 .toast {
     visibility: hidden;
-    min-width: 250px;
+    min-width: 220px;
     background-color: #333;
-    color: white;
+    color: #fff;
     text-align: center;
-    border-radius: 4px;
-    padding: 12px;
+    border-radius: 6px;
+    padding: 12px 18px;
     position: fixed;
     z-index: 9999;
+    bottom: 40px;
     left: 50%;
-    bottom: 30px;
-    font-size: 16px;
     transform: translateX(-50%);
+    font-size: 16px;
     opacity: 0;
-    transition: opacity 0.5s, visibility 0.5s;
+    transition: opacity 0.3s ease;
     user-select: none;
 }
 

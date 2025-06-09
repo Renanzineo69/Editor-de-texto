@@ -1,6 +1,8 @@
 const editor = document.getElementById('editor');
 const placeholderText = "Digite seu texto aqui...";
 const toast = document.getElementById('toast');
+const corTextoInput = document.getElementById('corTexto');
+const fontFamilySelect = document.getElementById('fontFamily');
 
 // Placeholder logic
 editor.addEventListener('focus', () => {
@@ -149,5 +151,73 @@ btnExportar.addEventListener('click', () => {
 window.addEventListener('click', (e) => {
     if (!btnExportar.contains(e.target) && !exportOptions.contains(e.target)) {
         exportOptions.classList.remove('show');
+    }
+});
+
+// COR DO TEXTO E FONTE
+
+corTextoInput.addEventListener('input', () => {
+    document.execCommand('foreColor', false, corTextoInput.value);
+});
+
+// Aplica fonte selecionada e mantém o select sincronizado
+fontFamilySelect.addEventListener('change', () => {
+    const font = fontFamilySelect.value;
+    if (font) {
+        document.execCommand('fontName', false, font);
+    }
+    // Depois de aplicar, mantém o valor no select (não reseta mais)
+});
+
+// Função para obter a fonte atual no ponto do cursor/seleção
+function getCurrentFont() {
+    // tenta pegar a fonte via comando
+    let font = document.queryCommandValue('fontName');
+
+    // O comando pode retornar aspas ou maiúsculas, normaliza
+    font = font.replace(/['"]/g, '').toLowerCase();
+
+    // Lista de fontes disponíveis no select, para validar e ajustar
+    const fontsDisponiveis = Array.from(fontFamilySelect.options).map(opt => opt.value.toLowerCase());
+
+    if (fontsDisponiveis.includes(font)) {
+        return font;
+    }
+    return ""; // fonte não reconhecida ou padrão
+}
+
+// Atualiza o select para a fonte atual no cursor
+function atualizarSelectFonte() {
+    if (editor.classList.contains('placeholder')) {
+        fontFamilySelect.value = "";
+        return;
+    }
+
+    let font = getCurrentFont();
+
+    if (!font) {
+        fontFamilySelect.value = "";
+        return;
+    }
+
+    // Ajusta o valor para o que está na lista, case insensitive
+    const optionEncontrada = Array.from(fontFamilySelect.options).find(opt => opt.value.toLowerCase() === font);
+
+    if (optionEncontrada) {
+        fontFamilySelect.value = optionEncontrada.value;
+    } else {
+        fontFamilySelect.value = "";
+    }
+}
+
+// Atualiza o select de fonte quando o usuário clica ou usa teclado no editor
+editor.addEventListener('keyup', atualizarSelectFonte);
+editor.addEventListener('mouseup', atualizarSelectFonte);
+editor.addEventListener('focus', atualizarSelectFonte);
+
+// Também limpa o select quando o editor perde foco se estiver vazio
+editor.addEventListener('blur', () => {
+    if (editor.classList.contains('placeholder')) {
+        fontFamilySelect.value = "";
     }
 });
